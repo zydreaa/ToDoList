@@ -23,6 +23,15 @@ public class TaskController {
         return taskName;
     }
 
+    public void existingTasks(){
+        Task task1 = new Task(tasks.size(), "Bake", "Cake for birthday","Friday", false);
+        tasks.add(task1);
+        Task task2 = new Task(tasks.size(), "Clean", "Clean all flat windows","Weekend", false);
+        tasks.add(task2);
+        Task task3 = new Task(tasks.size(), "Exam", "Learn theory for exam","Monday", true);
+        tasks.add(task3);
+    }
+
     public void newTask(){
         try {
             int taskId = tasks.size();
@@ -115,7 +124,7 @@ public class TaskController {
         return tasks;
     }
 
-    public Task viewTaskByName() {
+    public void viewTaskByName() {
         try {
             String selectedTaskName = (String) JOptionPane.showInputDialog(
                     frame,
@@ -129,15 +138,14 @@ public class TaskController {
 
             for (Task selectedTask : tasks) {
                 if (selectedTask.getTaskName() == selectedTaskName)
-                    return selectedTask;
-
-                System.out.println(selectedTask);
+            System.out.println("=== SELECTED TASK DETAILS ===\n" +
+                    "______________________________________________");
+            System.out.println(selectedTask);
             }
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(frame, "Problem occurred! Task not found.");
             exception.printStackTrace();
         }
-        return null;
     }
 
     public void viewAllTasks(){
@@ -169,19 +177,19 @@ public class TaskController {
         frame.setVisible(true);
     }
 
-    public void convertedTaskFromFile(){
-        String[] column = {"ID", "Task name", "Description", "Deadline", "Status"};
-        DefaultTableModel tableModel = new DefaultTableModel(column, 0);
-
-        for (Task task: getAllTasks()){
-            String[] convertedTask = {
-                    String.valueOf(task.getTaskId()),
-                    task.getTaskName(),
-                    task.getTaskDescription(),
-                    task.getTaskDeadline(),
-                    task.getTaskStatus() ? "Completed" : "Pending",
-            };
-            tableModel.addRow(convertedTask);
-        }
-    }
+//    public void convertedTaskFromFile(){
+//        String[] column = {"ID", "Task name", "Description", "Deadline", "Status"};
+//        DefaultTableModel tableModel = new DefaultTableModel(column, 0);
+//
+//        for (Task task: getAllTasks()){
+//            String[] convertedTask = {
+//                    String.valueOf(task.getTaskId()),
+//                    task.getTaskName(),
+//                    task.getTaskDescription(),
+//                    task.getTaskDeadline(),
+//                    task.getTaskStatus() ? "Completed" : "Pending",
+//            };
+//            tableModel.addRow(convertedTask);
+//        }
+//    }
 }

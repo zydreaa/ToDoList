@@ -8,9 +8,10 @@ public class Main {
 
         FileController fileController = new FileController();
         fileController.createNewFile();
+//        fileController.transferDataFromFile();
 
         TaskController taskController = new TaskController();
-
+        taskController.existingTasks();
         JOptionPane.showMessageDialog(null,"TO DO LIST APPLICATION");
 
         String menu = "";
@@ -45,10 +46,10 @@ public class Main {
                     break;
                 case "5":
                     taskController.viewAllTasks();
-                    fileController.readFromFile();
                     break;
                 case "6":
                     fileController.deleteFile();
+                    break;
                 case "0":
                     System.exit(1);
                 default:

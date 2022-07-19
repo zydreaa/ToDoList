@@ -16,6 +16,12 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
+    public Task(String taskName, String taskDescription, String taskDeadline) {
+        this.taskName = taskName;
+        this.taskDescription = taskDescription;
+        this.taskDeadline = taskDeadline;
+    }
+
     public int getTaskId() {
         return taskId;
     }
@@ -43,11 +49,11 @@ public class Task {
     public boolean isTaskStatus(){
         return statusMessage();
     }
+
     boolean statusMessage() {
         System.out.println(taskStatus ? "Completed" : "Pending");
         return statusMessage();
     }
-
 
     public Boolean getTaskStatus() {
         return taskStatus;
@@ -60,9 +66,9 @@ public class Task {
     @Override
     public String toString() {
         return "Task ID: " + taskId +
-                ", Name " + taskName + '\'' +
-                ", Description " + taskDescription + '\'' +
-                ", Deadline " + taskDeadline + '\'' +
-                ", Status " + taskStatus;
+                " | Name: " + taskName +
+                " | Description: " + taskDescription +
+                " | Deadline: " + taskDeadline +
+                " | Status: " + taskStatus + " |";
     }
 }
