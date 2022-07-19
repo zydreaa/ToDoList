@@ -10,5 +10,5 @@ This system allows you to choose from 5 menu options:
 * See all tasks
 
 App was created that entered tasks would be stored to file (CSV).
-So user is able to create file, save to file, ~~read from file~~ or delete file.
+So user is able to create file, save to file or delete file.
 Also system will throw exception messages if any issues/problems will appear. 

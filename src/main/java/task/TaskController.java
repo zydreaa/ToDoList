@@ -67,7 +67,7 @@ public class TaskController {
 
     Task findTaskByName(String name){
         for (Task task : tasks){
-            if (name.equals(task.getTaskName())){
+            if (name == task.getTaskName()){
                 return task;
             }
         }
@@ -141,6 +141,7 @@ public class TaskController {
             System.out.println("=== SELECTED TASK DETAILS ===\n" +
                     "______________________________________________");
             System.out.println(selectedTask);
+            break;
             }
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(frame, "Problem occurred! Task not found.");

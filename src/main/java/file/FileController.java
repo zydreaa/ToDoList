@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class FileController{
 
     private ArrayList<Task> tasks = new ArrayList<>();
-    String fileName = "ToDoList.csv";
+    String fileName = "ToDoList.txt";
     File myFile = new File(fileName);
 
     public void createNewFile() {
@@ -32,8 +32,6 @@ public class FileController{
     public void saveToFile(){
         try{
             FileWriter writer = new FileWriter(fileName);
-            writer.write(String.valueOf(tasks));
-
             for (Task task : tasks){
                 writer.write(String.valueOf(task));
                 writer.write("\n");
@@ -46,7 +44,7 @@ public class FileController{
         }
     }
 
-//    public void readFromFile() {
+//    public void readFromFile() { //need some configuration, update after file lessons
 //
 //        try {
 //            Scanner scanner = new Scanner(myFile);
@@ -69,37 +67,38 @@ public class FileController{
             JOptionPane.showMessageDialog(null,"Failed to delete the file " + myFile.getName());
         }
     }
-        public void transferDataFromFile(){
-        createNewFile();
-        try {
-            Scanner scanner = new Scanner(fileName);
-            int i=0;
-            while (scanner.hasNextLine()) {
 
-                String line = scanner.nextLine();
-                if(line.equals(null)){
-                    break;
-                }else{
-                    i++;
-                    String id = String.valueOf(StringUtils.substringBetween(line, "ID: ", " |"));
-                    Integer taskId = Integer.parseInt(id);
-                    String taskName = String.valueOf(StringUtils.substringBetween(line, "Name: ", " |"));
-                    String taskDescription = String.valueOf(StringUtils.substringBetween(line, "Description: ", " |"));
-                    String taskDeadline = String.valueOf(StringUtils.substringBetween(line, "Deadline: ", " |"));
-                    String status = String.valueOf(StringUtils.substringBetween(line, "Status: ", " |"));
-                    Boolean taskStatus = Boolean.parseBoolean(status);
-
-                    Task task = new Task(taskId, taskName, taskDescription, taskDeadline, taskStatus);
-                    tasks.add(task);
-
-                }
-            }
-            System.out.println(i + " Task was added from file!");
-            scanner.close();
-        } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, "An error occurred.");
-            exception.printStackTrace();
-        }
-    }
+//        public void transferDataFromFile(){ //need some configuration, update after file lessons
+//        createNewFile();
+//        try {
+//            Scanner scanner = new Scanner(fileName);
+//            int i=0;
+//            while (scanner.hasNextLine()) {
+//
+//                String line = scanner.nextLine();
+//                if(line.equals(null)){
+//                    break;
+//                }else{
+//                    i++;
+//                    String id = String.valueOf(StringUtils.substringBetween(line, "ID: ", " |"));
+//                    Integer taskId = Integer.parseInt(id);
+//                    String taskName = String.valueOf(StringUtils.substringBetween(line, "Name: ", " |"));
+//                    String taskDescription = String.valueOf(StringUtils.substringBetween(line, "Description: ", " |"));
+//                    String taskDeadline = String.valueOf(StringUtils.substringBetween(line, "Deadline: ", " |"));
+//                    String status = String.valueOf(StringUtils.substringBetween(line, "Status: ", " |"));
+//                    Boolean taskStatus = Boolean.parseBoolean(status);
+//
+//                    Task task = new Task(taskId, taskName, taskDescription, taskDeadline, taskStatus);
+//                    tasks.add(task);
+//
+//                }
+//            }
+//            System.out.println(i + " Task was added from file!");
+//            scanner.close();
+//        } catch (Exception exception) {
+//            JOptionPane.showMessageDialog(null, "An error occurred.");
+//            exception.printStackTrace();
+//        }
+//    }
 
 }
